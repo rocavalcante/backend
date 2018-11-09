@@ -9,14 +9,15 @@ RUN export LANG=C.UTF-8
 #============================
 # Python & Dependencies
 #============================
+
+RUN apt-get update -qq &&\
+    apt-get install -y software-properties-common &&\
+    add-apt-repository ppa:jonathonf/python-3.6
+
 RUN apt-get update -qq && \
-    apt-get install -y software-properties-common
-
-RUN add-apt-repository ppa:jonathonf/python-3.6
-RUN apt-get update -y
-
-RUN apt-get install -y python-software-properties build-essential \
-        python3.6 python3.6-dev python3-pip python3.6-venv
+        apt-get install -y python-software-properties build-essential \
+        python3.6 python3.6-dev python3-pip \
+        python3.6-venv
 
 # define python3.6 as default
 RUN rm /usr/bin/python && ln -s /usr/bin/python3.6 /usr/bin/python
@@ -28,8 +29,7 @@ RUN python3.6 -m pip install pip --upgrade && \
 RUN apt-get install -y -q --no-install-recommends \
     libgconf2-4 libnss3-1d libxss1 \
     fonts-liberation libappindicator1 xdg-utils \
-    software-properties-common \
-    curl unzip wget \
+    curl unzip wget firefox\
     xvfb \
     apt-transport-https \
     libssl-dev \
@@ -37,12 +37,6 @@ RUN apt-get install -y -q --no-install-recommends \
     devscripts \
     autoconf \
     ssl-cert
-
-
-#============================
-# Firefox latest
-#============================
-RUN apt-get update && apt-get install -y firefox
 
 #============================
 # Selenium & virtualenv

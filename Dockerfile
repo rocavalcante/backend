@@ -11,13 +11,17 @@ RUN export LANG=C.UTF-8
 #============================
 
 RUN apt-get update -qq &&\
-    apt-get install -y software-properties-common &&\
-    add-apt-repository ppa:jonathonf/python-3.6
+    apt-get install -y software-properties-common wget
+
+RUN wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz && \
+tar -xvf Python-3.6.3.tgz && \
+cd Python-3.6.3 && \
+./configure --enable-optimizations && \
+make -j8 && \
+make install
 
 RUN apt-get update -qq && \
         apt-get install -y python-software-properties build-essential \
-        python3.6 python3.6-dev python3-pip \
-        python3.6-venv
 
 # define python3.6 as default
 RUN rm /usr/bin/python && ln -s /usr/bin/python3.6 /usr/bin/python

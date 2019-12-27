@@ -31,7 +31,7 @@ RUN python3.6 -m pip install pip --upgrade && \
 
 
 RUN pip3 install selenium pyvirtualdisplay \
-    virtualenv pipenv p4python
+    virtualenv pipenv p4python pycrypto
 
 #===========================
 # Node & NPM LTS

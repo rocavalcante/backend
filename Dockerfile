@@ -7,7 +7,7 @@ RUN export LC_ALL=C.UTF-8
 RUN export LANG=C.UTF-8
 
 RUN apt-get update -qq && apt-get install -y -q --no-install-recommends \
-    libgconf2-4 libnss3-1d libxss1 software-properties-common wget \
+    libgconf2-4 libnss3 libxss1 software-properties-common wget \
     fonts-liberation libappindicator1 xdg-utils \
     curl unzip wget build-essential \
     xvfb \

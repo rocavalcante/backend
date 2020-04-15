@@ -18,7 +18,7 @@ RUN apt-get update -qq && apt-get install -y -q --no-install-recommends \
     autoconf \
     ssl-cert
 
-RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.7.0.tgz && \
+RUN wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz && \
 tar -xvf Python-3.7.0.tgz && \
 cd Python-3.7.0 && \
 ./configure --enable-optimizations && \

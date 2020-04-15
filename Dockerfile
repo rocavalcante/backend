@@ -18,16 +18,16 @@ RUN apt-get update -qq && apt-get install -y -q --no-install-recommends \
     autoconf \
     ssl-cert
 
-RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz && \
-tar -xvf Python-3.6.8.tgz && \
-cd Python-3.6.8 && \
+RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.7.0.tgz && \
+tar -xvf Python-3.7.0.tgz && \
+cd Python-3.7.0 && \
 ./configure --enable-optimizations && \
 make -j8 && \
 make install
 
 # update pip
-RUN python3.6 -m pip install pip --upgrade && \
-    python3.6 -m pip install wheel 
+RUN python3.7 -m pip install pip --upgrade && \
+    python3.7 -m pip install wheel 
 
 
 RUN pip3 install selenium pyvirtualdisplay \
@@ -39,8 +39,8 @@ RUN pip3 install selenium pyvirtualdisplay \
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 
-#define python3.6 as default
-RUN rm -rfv /usr/bin/python && ln -s /usr/local/bin/python3.6 /usr/bin/python
+#define python3.7 as default
+RUN rm -rfv /usr/bin/python && ln -s /usr/local/bin/python3.7 /usr/bin/python
 
 #Clear cache
 RUN rm -rf /var/lib/apt/lists/*
